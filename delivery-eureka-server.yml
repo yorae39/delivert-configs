@@ -1,13 +1,9 @@
 server:
-  port: 9091
-
+  port: ${PORT:8761} # Indicate the default PORT where this service will be started
+ 
 eureka:
-  instance:
-    hostname: localhost
   client:
-    registerWithEureka: true
+    registerWithEureka: false   #telling the server not to register himself in the service registry
     fetchRegistry: false
-    serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
   server:
-    wait-time-in-ms-when-sync-empty: 3000
+    waitTimeInMsWhenSyncEmpty: 0    #wait time for subsequent sync
